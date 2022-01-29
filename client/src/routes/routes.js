@@ -1172,9 +1172,15 @@ export const mainRoutes = {
       active: true
     },
     {
+      name: 'Project',
+      icon: 'home',
+      to: '/project',
+      active: true
+    },
+    {
       name: 'Explore',
       icon: 'comments',
-      to: '/project',
+      to: '/explore',
       active: true
     },
   ]

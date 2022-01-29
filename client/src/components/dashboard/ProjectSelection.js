@@ -60,7 +60,7 @@ const ProjectSelection = () => {
         <Form onSubmit={handleSubmit}>
         <Modal.Body>
           {/* <h4>Centered Modal</h4> */}
-          <Form.Group className="mb-3" controlId="farm_name">
+          <Form.Group className="mb-3" controlId="project_name">
             <Form.Label>Project Name</Form.Label>
             <Form.Control
               type="text"
@@ -70,7 +70,7 @@ const ProjectSelection = () => {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="farm_address">
+          <Form.Group className="mb-3" controlId="project_bio">
             <Form.Label>Project Bio</Form.Label>
             <Form.Control
               as="textarea"

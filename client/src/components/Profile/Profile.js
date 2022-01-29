@@ -9,23 +9,26 @@ import ProfileSettings from './ProfileSettings';
 // import DangerZone from './DangerZone';
 
 const Profile = () => {
-    return (
-        <>
-            <ProfileBanner>
-                <ProfileBanner.Header coverSrc={coverSrc} className='mb-0' />
-            </ProfileBanner>
-            <Row className='g-3 mb-3'>
-                <Col xxl={9}>
-                    <ProfileSettings />
-                </Col>
-            </Row>
-            {/* <Row className="g-3 mb-3">
+  return (
+    <>
+      <ProfileBanner>
+        <ProfileBanner.Header
+          coverSrc={coverSrc}
+          className="mb-0"
+        />
+      </ProfileBanner>
+      <Row className="g-3 mb-3">
+        <Col xxl={9}>
+          <ProfileSettings />
+        </Col>
+      </Row>
+      {/* <Row className="g-3 mb-3">
         <Col xxl={9}>
             <ChangePassword />
         </Col>
       </Row> */}
-        </>
-    );
+    </>
+  );
 };
 
 export default Profile;

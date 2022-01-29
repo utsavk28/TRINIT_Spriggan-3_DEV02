@@ -21,21 +21,12 @@ const TopNavRightSideNavItem = () => {
           className="px-2 theme-control-toggle"
           onClick={() => setConfig('isDark', !isDark)}
         >
-          <OverlayTrigger
-            overlay={
-              <Tooltip id="hi">
-                {isDark ? 'Switch to light theme' : 'Switch to dark theme'}
-              </Tooltip>
-            }
-            placement="right"
-          >
             <div className="theme-control-toggle-label">
               <FontAwesomeIcon
                 icon={isDark ? 'sun' : 'moon'}
                 className="fs-0"
               />
             </div>
-          </OverlayTrigger>
         </Nav.Link>
       </Nav.Item>
       <ProfileDropdown />
