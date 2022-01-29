@@ -5,6 +5,8 @@ const connectDB = require('./config/db');
 const usersRoutes = require('./routes/api/users');
 const authRoutes = require('./routes/api/auth');
 const projectRoutes = require('./routes/api/projects');
+const bugRoutes = require('./routes/api/bugs');
+const commentRoutes = require('./routes/api/comments');
 
 // App Initialized
 const app = express();
@@ -24,6 +26,8 @@ app.get('/', (req, res) => {
 app.use('/api/users', usersRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/project', projectRoutes);
+app.use('/api/bugs', bugRoutes);
+app.use('/api/comments', commentRoutes);
 
 //  Port
 const PORT = process.env.PORT || 5000;

@@ -2,14 +2,27 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const CommentSchema = new Schema({
-    title: {
+    description: {
         type: String,
         required: true,
-        unique: true,
+    },
+    bugId:{
+        type:String,
+        required:true,
+        bug:{
+            type:Schema.Types.ObjectId,
+            ref:'bug',
+        },
+    },
+    projectId:{
+        type:String,
+        required:true,
+        project:{
+            type:Schema.Types.ObjectId,
+            ref:'project',
+        },
     },
     author: {
-        type: String,
-        required: true,
         user: {
             type: Schema.Types.ObjectId,
             ref: 'user',
