@@ -4,6 +4,27 @@ const { validationResult } = require('express-validator');
 
 const User = require('../models/User');
 
+//Update User
+const updateUser=async (req,res)=>{
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+        return res.status(400).json({ errors: errors.array() });
+    try {
+        let posts = await User.findById(req.params.userId);
+        posts.username=req.body.username;
+        posts.password=req.body.password;
+        posts.email=req.body.email;
+        posts.contact=req.body.contact;
+
+        posts=await posts.save();
+        res.json(posts);
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Server Error');
+    }
+};
+
 // Register User
 const registerUser = async (req, res) => {
     const errors = validationResult(req);
@@ -12,7 +33,7 @@ const registerUser = async (req, res) => {
             errors: errors.array(),
         });
 
-    const { username, email, password } = req.body;
+    const { username, email, password,contact } = req.body;
 
     try {
         let user = await User.findOne({
@@ -39,6 +60,7 @@ const registerUser = async (req, res) => {
             username,
             email,
             password,
+            contact,
         });
 
         const salt = await bcrypt.genSalt(10);
@@ -62,4 +84,4 @@ const registerUser = async (req, res) => {
     }
 };
 
-module.exports = { registerUser };
+module.exports = { registerUser ,updateUser};

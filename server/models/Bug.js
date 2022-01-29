@@ -6,10 +6,24 @@ const BugSchema = new Schema({
         type: String,
         required: true,
     },
+    descriptions: {
+        type: String,
+        required: true,
+        
+    },
     status: {
         type: String,
     },
+    threat_level: {
+        type: String,
+    },
     assigned_to: {
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: 'user',
+        },
+    },
+    created_by: {
         user: {
             type: Schema.Types.ObjectId,
             ref: 'user',
@@ -23,6 +37,10 @@ const BugSchema = new Schema({
             },
         },
     ],
+    projectId: {
+        type: Schema.Types.ObjectId,
+        ref: 'project',
+    },
     created_at: {
         type: Date,
         default: Date.now,
