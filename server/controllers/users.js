@@ -15,6 +15,7 @@ const updateUser=async (req,res)=>{
         posts.password=req.body.password;
         posts.email=req.body.email;
         posts.contact=req.body.contact;
+        posts.role_id_user=re.body.role_id_user;
 
         posts=await posts.save();
         res.json(posts);

@@ -41,6 +41,13 @@ const BugSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'project',
     },
+    deadline:{
+        type:Date,
+        default:Date.now,
+    },
+    role_id:{
+        type:Number,
+    },
     created_at: {
         type: Date,
         default: Date.now,

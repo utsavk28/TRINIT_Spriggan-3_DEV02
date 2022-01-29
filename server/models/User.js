@@ -37,7 +37,9 @@ const UserSchema = new Schema({
             },
         }
     ],
-    
+    role_id_user:{
+        type:Number,
+    },
     date: {
         type: Date,
         default: Date.now,

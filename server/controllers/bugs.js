@@ -50,6 +50,8 @@ const updateBugs = async (req, res) => {
         posts.created_by=req.body.created_by;
         posts.thread=req.body.thread;
         posts.projectId=req.body.projectId;
+        posts.deadline=req.body.deadline;
+        posts.user_id=req.body.user_id;
 
         posts=await posts.save();
         res.json(posts);
