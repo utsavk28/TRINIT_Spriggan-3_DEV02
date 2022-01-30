@@ -6,6 +6,7 @@ import { Col, Row } from 'react-bootstrap';
 import { BrowserRouter as Router } from 'react-router-dom';
 import AddIssue from './AddIssue/AddIssue';
 import BugPage from './BugPage';
+import Members from './Member/Members';
 
 const Project = () => {
   return (
@@ -23,6 +24,7 @@ const Project = () => {
             <Route path="/home" exact component={ProjectHome} />
             <Route path="/add-issue" exact component={AddIssue} />
             <Route path="/bug" exact component={BugPage} />
+            <Route path="/members" exact component={Members} />
           </Switch>
           </Col>
           </Router>

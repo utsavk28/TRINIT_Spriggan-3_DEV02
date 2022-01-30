@@ -25,7 +25,7 @@ const Sidebar = () => {
 
       
     return (
-      <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial'}}>
+      <div style={{ display: 'flex', height: '180vh', overflow: 'scroll initial'}}>
         <CDBSidebar backgroundColor="#727cf5" className="navbar-style">
           <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large handlebar-icon"></i>}>
             {/* <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
@@ -40,6 +40,10 @@ const Sidebar = () => {
             <NavLink exact to="/add-issue" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="plus">&nbsp;Add Issue</CDBSidebarMenuItem>
             </NavLink>
+            <NavLink exact to="/members" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="user">&nbsp;Members</CDBSidebarMenuItem>
+            </NavLink>
+
           </CDBSidebarMenu>
         </CDBSidebarContent>
 {/*   

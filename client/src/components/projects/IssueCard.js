@@ -1,8 +1,18 @@
 import React from 'react';
 import FalconCardHeader from 'components/common/FalconCardHeader';
 import { Card, Button } from 'react-bootstrap';
+import { useHistory } from "react-router-dom";
 
 const IssueCard = () => {
+
+  const history = useHistory();
+
+  const routeChange = () =>{ 
+    let path = `/bug`; 
+    history.push(path);
+  }
+
+
   return (
       <>
     <div style={{width:"100%"}} className='container-fluid'>
@@ -16,7 +26,7 @@ const IssueCard = () => {
             Issue Description
         </p>
         <div className="d-flex justify-content-end">
-          <Button variant="primary" type="submit">
+          <Button variant="primary" onClick={routeChange}>
               More Details
             </Button>
             </div>
