@@ -2,15 +2,8 @@
 
 
 <!-- PROJECT LOGO -->
-<h1>-</h1>
+<h1>Bug Management System</h1>
 <br />
-    Bug Management System
-    <br />
-    <br />
-
-
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
