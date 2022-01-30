@@ -62,6 +62,10 @@ const Sidebar = () => {
                             <CDBSidebarMenuItem icon='plus'>
                                 &nbsp;Add Issue
                             </CDBSidebarMenuItem>
+<NavLink exact to="/members" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="user">&nbsp;Members</CDBSidebarMenuItem>
+            </NavLink>
+
                         </NavLink>
                     </CDBSidebarMenu>
                 </CDBSidebarContent>

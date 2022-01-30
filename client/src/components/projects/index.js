@@ -9,6 +9,7 @@ import BugPage from './BugPage';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { getAllBugsforProject } from '../../redux/actions/project';
+import Members from './Member/Members';
 
 const Project = () => {
     const { projects, bugs } = useSelector((state) => state.project);
@@ -41,6 +42,7 @@ const Project = () => {
                                 component={AddIssue}
                             />
                             <Route path='/bug' exact component={BugPage} />
+                            <Route path="/members" exact component={Members} />
                         </Switch>
                     </Col>
                 </Router>
