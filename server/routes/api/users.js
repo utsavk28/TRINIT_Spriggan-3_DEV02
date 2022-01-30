@@ -16,7 +16,7 @@ router.post(
             'password',
             'Please enter a password of length more than 6'
         ).isLength({ min: 6 }),
-        check('contact','Contact is required').not().isEmpty(),
+        // check('contact','Contact is required').not().isEmpty(),
     ],
     registerUser
 );

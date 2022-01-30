@@ -3,8 +3,7 @@ import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import ListGroup from 'react-bootstrap/ListGroup'
 
 const BugPage = () => {
-
-    const [issueData, setIssueData] = useState({
+const [issueData, setIssueData] = useState({
         subject: '',
         description: '',
         status: 'Open',
@@ -256,6 +255,7 @@ const BugPage = () => {
     </div>
       </>
   );
+
 };
 
 export default BugPage;

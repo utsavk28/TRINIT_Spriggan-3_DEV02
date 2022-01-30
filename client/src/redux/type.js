@@ -11,3 +11,11 @@ export const LOGIN_USER = 'LOGIN_USER';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 
 export const LOGOUT = 'LOGOUT';
+
+export const GET_PROJECT = 'GET_PROJECT'
+export const CREATE_PROJECT = 'CREATE_PROJECT'
+export const GET_PROJECTS = 'GET_PROJECTS'
+
+export const GET_BUG = 'GET_BUG'
+export const GET_BUGS = 'GET_BUGS'
+export const PROJECT_ERROR = 'PROJECT_ERROR'
