@@ -40,7 +40,8 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-    Bug Management System
+   Bug Management System
+    
 * Home Page
 * Profile Page
 
