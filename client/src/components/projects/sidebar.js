@@ -29,7 +29,7 @@ const Sidebar = () => {
         <div
             style={{
                 display: 'flex',
-                height: '100vh',
+                height: '170vh',
                 overflow: 'scroll initial',
             }}
         >
@@ -62,6 +62,7 @@ const Sidebar = () => {
                             <CDBSidebarMenuItem icon='plus'>
                                 &nbsp;Add Issue
                             </CDBSidebarMenuItem>
+                            </NavLink>
                             <NavLink
                                 exact
                                 to={`/project/${location}/members`}
@@ -71,7 +72,27 @@ const Sidebar = () => {
                                     &nbsp;Members
                                 </CDBSidebarMenuItem>
                             </NavLink>
-                        </NavLink>
+
+                            <NavLink
+                                exact
+                                to={`/project/${location}/summary`}
+                                activeClassName='activeClicked'
+                            >
+                                <CDBSidebarMenuItem icon='list'>
+                                    &nbsp;Summary
+                                </CDBSidebarMenuItem>
+                            </NavLink>
+
+                            <NavLink
+                                exact
+                                to={`/project/${location}/pie`}
+                                activeClassName='activeClicked'
+                            >
+                                <CDBSidebarMenuItem icon='circle'>
+                                    &nbsp;Pie Chart
+                                </CDBSidebarMenuItem>
+                            </NavLink>
+                        
                     </CDBSidebarMenu>
                 </CDBSidebarContent>
                 {/*   

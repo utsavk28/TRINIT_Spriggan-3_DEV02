@@ -10,7 +10,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { getAllBugsforProject, getProject } from '../../redux/actions/project';
 import Members from './Member/Members';
-
+import Summary from './Summary';
+import PieChart from './PieChart';
 const Project = () => {
     const { projects, bugs } = useSelector((state) => state.project);
     const dispatch = useDispatch();
@@ -51,6 +52,16 @@ const Project = () => {
                                 path='/project/:projectId/members'
                                 exact
                                 component={Members}
+                            />
+                            <Route
+                                path='/project/:projectId/summary'
+                                exact
+                                component={Summary}
+                            />
+                            <Route
+                                path='/project/:projectId/pie'
+                                exact
+                                component={PieChart}
                             />
                         </Switch>
                     </Col>
