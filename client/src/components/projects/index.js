@@ -44,7 +44,7 @@ const Project = () => {
                                 component={AddIssue}
                             />
                             <Route
-                                path='/project/:projectId/bug'
+                                path='/bug/:bugId'
                                 exact
                                 component={BugPage}
                             />

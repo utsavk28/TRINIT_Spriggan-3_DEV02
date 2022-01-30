@@ -19,3 +19,5 @@ export const GET_PROJECTS = 'GET_PROJECTS'
 export const GET_BUG = 'GET_BUG'
 export const GET_BUGS = 'GET_BUGS'
 export const PROJECT_ERROR = 'PROJECT_ERROR'
+
+export const GET_THREAD = 'GET_THREAD'

@@ -5,6 +5,7 @@ import {
     CREATE_PROJECT,
     GET_PROJECTS,
     PROJECT_ERROR,
+    GET_THREAD,
 } from '../type';
 
 const initialState = {
@@ -14,6 +15,7 @@ const initialState = {
     error: null,
     bugs: [],
     bug: {},
+    comments: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -51,6 +53,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 error: payload,
+            };
+        case GET_THREAD:
+            return {
+                ...state,
+                comments: payload,
             };
         default:
             return state;

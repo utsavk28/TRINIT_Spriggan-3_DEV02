@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import ListGroup from 'react-bootstrap/ListGroup';
+import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { getBug, getThreadbyBugId, postComment } from 'redux/actions/project';
 
 const BugPage = () => {
     const [issueData, setIssueData] = useState({
@@ -12,7 +15,11 @@ const BugPage = () => {
         priority: '',
         comment: '',
     });
-
+    const { projects, bug, bugs, comments } = useSelector(
+        (state) => state.project
+    );
+    const dispatch = useDispatch();
+    const location = useLocation().pathname.split('/')[2];
     const handleChange = (e) => {
         setIssueData({
             ...issueData,
@@ -23,6 +30,11 @@ const BugPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
     };
+
+    useEffect(() => {
+        dispatch(getBug(location));
+        dispatch(getThreadbyBugId({ bugId: location }));
+    }, [location]);
 
     const handleEdit = (e) => {
         /*Enable everthing to true */
@@ -42,7 +54,10 @@ const BugPage = () => {
 
     const handleDelete = (e) => {};
 
-    const handleComment = (e) => {};
+    const handleComment = (e) => {
+        e.preventDefault();
+        dispatch(postComment({ bugId: location, comment: issueData.comment }));
+    };
 
     return (
         <>
@@ -68,10 +83,6 @@ const BugPage = () => {
                         <Card.Body className='bg-light'>
                             <Form onSubmit={handleSubmit}>
                                 <div className='d-flex justify-content-end'>
-                                    {/* <Button variant="warning" className='mr-3' onClick={handleEdit}>
-              Edit
-            </Button> */}
-
                                     <Button
                                         variant='danger'
                                         onClick={handleDelete}
@@ -89,7 +100,7 @@ const BugPage = () => {
                                         type='text'
                                         id='subject'
                                         placeholder='Subject'
-                                        value={issueData.name}
+                                        value={bug.title}
                                         name='subject'
                                         onChange={handleChange}
                                         disabled='true'
@@ -104,7 +115,7 @@ const BugPage = () => {
                                         as='textarea'
                                         id='description'
                                         placeholder=''
-                                        value={issueData.description}
+                                        value={bug.descriptions}
                                         name='description'
                                         rows={7}
                                         onChange={handleChange}
@@ -186,29 +197,7 @@ const BugPage = () => {
                                             <option value='3'>High</option>
                                         </Form.Select>
                                     </Form.Group>
-
-                                    {/* <Form.Group className="mb-3" controlId="comment">
-            <Form.Label>Comment</Form.Label>
-            <Form.Control
-              type="text"
-              id="comment"
-              placeholder="Comment on this Blog"
-              value={issueData.name}
-              name="comment"
-              onChange={handleChange} disabled="true"
-            />
-            </Form.Group> */}
                                 </Row>
-
-                                {/* <div className="d-flex justify-content-end">
-          <Button variant="primary" type="submit" className='mr-3'>
-              Save
-            </Button>
-            <Button variant="secondary" className='mr-3' onClick={handleDiscard}>
-              Discard Changes
-            </Button> 
-
-          </div>*/}
                             </Form>
                         </Card.Body>
                     </Col>
@@ -242,7 +231,7 @@ const BugPage = () => {
                                         value={issueData.name}
                                         name='comment'
                                         onChange={handleChange}
-                                        disabled='true'
+                                        // disabled='true'
                                     />
                                 </Form.Group>
 
@@ -251,6 +240,7 @@ const BugPage = () => {
                                         variant='primary'
                                         type='submit'
                                         className='mr-3'
+                                        onSubmit={handleComment}
                                     >
                                         Post Comment
                                     </Button>
@@ -263,11 +253,11 @@ const BugPage = () => {
                 <Row className='ml-5 mr-4 mt-3 mb-3'>
                     {/* Map Method */}
                     <ListGroup>
-                        <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                        <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                        <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-                        <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-                        <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+                        {comments.map((comment) => (
+                            <ListGroup.Item>
+                                {comment.description}
+                            </ListGroup.Item>
+                        ))}
                     </ListGroup>
                 </Row>
             </div>

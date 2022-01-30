@@ -30,7 +30,8 @@ const ProjectSchema = new Schema({
                 ref: 'user',
             },
             level: {
-                type: Number,
+                type: String,
+                default: 0,
             },
         },
     ],

@@ -7,6 +7,7 @@ import {
     CREATE_PROJECT,
     GET_PROJECTS,
     PROJECT_ERROR,
+    GET_THREAD,
 } from '../type';
 
 export const getAllBugsforProject = (projectId) => async (dispatch) => {
@@ -57,7 +58,7 @@ export const getProjects = () => async (dispatch) => {
 
 export const getUserProjects = () => async (dispatch) => {
     try {
-        console.log('000')
+        console.log('000');
         const res = await axios.get(`${url}/api/project/user/request`);
         // console.log(res.data);
         // const res = {
@@ -112,7 +113,7 @@ export const createProject =
     };
 
 export const reportBug =
-    ({ title, descriptions, projectId }) =>
+    ({ title, descriptions, projectId, threat_level = 0 }) =>
     async (dispatch) => {
         const config = {
             headers: {
@@ -120,7 +121,12 @@ export const reportBug =
             },
         };
 
-        const body = JSON.stringify({ title, descriptions, projectId });
+        const body = JSON.stringify({
+            title,
+            descriptions,
+            projectId,
+            threat_level,
+        });
         try {
             await axios.post(`${url}/api/bugs/`, body, config);
         } catch (error) {
@@ -136,6 +142,47 @@ export const joinProject =
     async (dispatch) => {
         try {
             await axios.put(`${url}/api/project/join/${projectId}`);
+        } catch (error) {
+            dispatch({
+                type: PROJECT_ERROR,
+                payload: 'error',
+            });
+        }
+    };
+
+export const getThreadbyBugId =
+    ({ bugId }) =>
+    async (dispatch) => {
+        try {
+            const res = await axios.get(`${url}/api/comments/bug/${bugId}`);
+            console.log(res.data);
+            console.log(bugId);
+            dispatch({
+                type: GET_THREAD,
+                payload: res.data,
+            });
+        } catch (error) {
+            dispatch({
+                type: PROJECT_ERROR,
+                payload: 'thread error',
+            });
+        }
+    };
+
+export const postComment =
+    ({ bugId, comment }) =>
+    async (dispatch) => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+
+        const body = JSON.stringify({ description: comment, bugId });
+        // console.log(body);
+        try {
+            await axios.post(`${url}/api/comments/`, body, config);
+            getThreadbyBugId({ bugId });
         } catch (error) {
             dispatch({
                 type: PROJECT_ERROR,

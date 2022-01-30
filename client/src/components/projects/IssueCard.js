@@ -7,7 +7,7 @@ import { DateFormatter } from '../../utils/date-format';
 
 const IssueCard = ({ issue }) => {
     const location = useLocation().pathname.split('/')[2];
-    const { title, descriptions, created_at } = issue;
+    const { title, descriptions, created_at ,_id} = issue;
     return (
         <>
             <div style={{ width: '100%' }} className='container-fluid'>
@@ -19,7 +19,7 @@ const IssueCard = ({ issue }) => {
                     <Card.Body>
                         <p className='fs--1 text-600'>{descriptions}</p>
                         <div className='d-flex justify-content-end'>
-                            <Link to={`/project/${location}/bug`}>
+                            <Link to={`/bug/${_id}/`}>
                                 <Button variant='primary' type='submit'>
                                     More Details
                                 </Button>

@@ -102,11 +102,14 @@ const getUserProjects = async (req, res) => {
                 },
             })
             .exec();
-    
 
         let userProjects = [];
         for (let i = 0; i < projects.length; i++) {
-            const users = projects[i].users.map((user) => String(user.user._id));
+            const users = projects[i].users.map((user) =>
+                String(user.user._id)
+            );
+            // console.log(users);
+
             if (users.includes(String(req.user.id)))
                 userProjects.push(projects[i]);
         }
@@ -151,6 +154,7 @@ const createProject = async (req, res) => {
             users: [
                 {
                     user: user,
+                    level: 10,
                 },
             ],
         });
