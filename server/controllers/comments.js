@@ -21,7 +21,6 @@ const getAllComments = async (req, res) => {
     }
 };
 
-
 //displaying comments for specific id
 const getSpecificComments = async (req, res) => {
     const errors = validationResult(req);
@@ -43,51 +42,36 @@ const updateComments = async (req, res) => {
         return res.status(400).json({ errors: errors.array() });
     try {
         let posts = await Comment.findById(req.params.commentId);
-        posts.description=req.body.description;
-        posts.bugId=req.body.bugId;
-        posts.projectId=req.body.projectId;
-        posts.author=req.body.author,
-
-        posts=await posts.save();
+        posts.description = req.body.description;
+        posts.bugId = req.body.bugId;
+        posts.projectId = req.body.projectId;
+        (posts.author = req.body.author), (posts = await posts.save());
         res.json(posts);
-
     } catch (error) {
         console.log(error);
         res.status(500).send('Server Error');
     }
 };
 
-
-
 //checking validation for comments
-const reportComments =async (req, res) => {
+const reportComments = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty())
         return res.status(400).json({ errors: errors.array() });
 
-    const {  description,projectId,bugId } = req.body;
+    const { description, projectId, bugId } = req.body;
 
     try {
         const user = await User.findById(req.user.id).select('-password');
-        const project = await Project.findById(projectId);
-        const bug=await Bug.findById(bugId);
-        if (!user)
-            return res.status(400).json({
-                errors: [{ msg: 'User Not Found' }],
-            });
+        const bug = await Bug.findById(bugId);
 
-        if (!project)
-            return res.status(400).json({
-                errors: [{ msg: 'Project Not Found' }],
-            });
-          
-            if (!bug)
+        if (!bug)
             return res.status(400).json({
                 errors: [{ msg: 'Bug Not Found' }],
-            });    
+            });
+
         let comment = await Comment.find({
             description,
-            projectId
         });
 
         if (comment.length > 0 && check(comment, user.id)) {
@@ -98,7 +82,6 @@ const reportComments =async (req, res) => {
 
         comment = new Comment({
             description,
-            projectId,
             bugId,
             author: {
                 user: user,
@@ -114,21 +97,21 @@ const reportComments =async (req, res) => {
     }
 };
 //Bug specific comments
-const getBugComments=async(req,res)=>{
+const getBugComments = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty())
         return res.status(400).json({ errors: errors.array() });
     try {
-        const posts = await Comment.find({bugId:req.params.bugId}).sort({
-            date:-1,
+        const posts = await Comment.find({ bugId: req.params.bugId }).sort({
+            date: -1,
         });
+        console.log(posts)
         res.json(posts);
     } catch (error) {
         console.log(error);
         res.status(500).send('Server Error');
     }
 };
-
 
 //Delete comment
 const deleteComments = async (req, res) => {
@@ -141,12 +124,10 @@ const deleteComments = async (req, res) => {
     try {
         const comment = await Comment.findById(commentId);
 
-        
         if (!comment) {
             return res.status(400).json({
                 errors: [{ msg: 'Comment not found' }],
             });
-        
         }
 
         await comment.remove();
@@ -160,4 +141,11 @@ const deleteComments = async (req, res) => {
     }
 };
 
-module.exports = { reportComments,getAllComments,getSpecificComments,updateComments,deleteComments,getBugComments};
+module.exports = {
+    reportComments,
+    getAllComments,
+    getSpecificComments,
+    updateComments,
+    deleteComments,
+    getBugComments,
+};

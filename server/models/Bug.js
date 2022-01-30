@@ -14,7 +14,8 @@ const BugSchema = new Schema({
         type: String,
     },
     threat_level: {
-        type: String,
+        type: Number,
+        default: 0
     },
     assigned_to: {
         user: {
@@ -40,12 +41,12 @@ const BugSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'project',
     },
-    deadline:{
-        type:Date,
-        default:Date.now,
+    deadline: {
+        type: Date,
+        default: Date.now,
     },
-    role_id:{
-        type:Number,
+    role_id: {
+        type: Number,
     },
     created_at: {
         type: Date,
