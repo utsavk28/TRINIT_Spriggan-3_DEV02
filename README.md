@@ -2,6 +2,7 @@
 
 
 <!-- PROJECT LOGO -->
+<h1>-</h1>
 <br />
     Bug Management System
     <br />
@@ -39,13 +40,23 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-   Bug Management System
-    
+    Bug Management System
 * Home Page
 * Profile Page
 
 ### Features
-- a
+-  The first feature which a team-leader has right to is creation of a project. While creating a project he adds all the information required such as a project_name, project_description, creation_details, project owner, users,etc.  
+-  After the project is successfully created, the team lead will assign roles to different people in the software.  
+-  People can join the projects as users. It would be the team lead’s decision whether he wants to appoint the user or no and which designation he wishes to assign him. 
+-  Once the team members are assigned, the team lead along with the development team can create bugs for the particular project. Not only the development team but also users can create bugs for the project. 
+-  After the bugs are created, one can view them all together. In order to discuss or add comments for any bug, the user must click on the bug and then he can add comments for that bug.  
+
+Brownie Features: 
+
+- Status of all the bugs is visible on the dashboard.  
+- Bug reports would be generated in the form of a pdf and would be mailed to the team lead.  
+- Specific data would be shown with statistical information (in graphical representation). 
+- This is a cross platform application and can be accessed using a secure header as well. 
 
 
 ### Built With
