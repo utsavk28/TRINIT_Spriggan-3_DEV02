@@ -125,9 +125,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [Utsav Khatu](https://www.linkedin.com/in/utsav-khatu-431b741bb/) 
-Your Name - [Utsav Khatu](https://www.linkedin.com/in/utsav-khatu-431b741bb/) 
-Your Name - [Utsav Khatu](https://www.linkedin.com/in/utsav-khatu-431b741bb/) 
+- [Utsav Khatu](https://www.linkedin.com/in/utsav-khatu-431b741bb/) 
+- [Utsav Khatu](https://www.linkedin.com/in/utsav-khatu-431b741bb/) 
+- [Utsav Khatu](https://www.linkedin.com/in/utsav-khatu-431b741bb/) 
 
 
 
