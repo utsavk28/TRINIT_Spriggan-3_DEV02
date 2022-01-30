@@ -11,8 +11,28 @@ const getAllProjects = async (req, res) => {
     if (!errors.isEmpty())
         return res.status(400).json({ errors: errors.array() });
     try {
-        const posts = await Project.find();
-        res.json(posts);
+        const projects = await Project.find();
+        res.json(projects);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Server Error');
+    }
+};
+
+// Get User Projects
+const getUserProjects = async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+        return res.status(400).json({ errors: errors.array() });
+    try {
+        const projects = await Project.find();
+        let userProjects = [];
+        for (let i = 0; i < projects.length; i++) {
+            const users = projects[i].users.map((user) => String(user.user));
+            if (users.includes(String(req.user.id)))
+                userProjects.push(projects[i]);
+        }
+        res.json(userProjects);
     } catch (error) {
         console.log(error);
         res.status(500).send('Server Error');
@@ -78,7 +98,6 @@ const deleteProject = async (req, res) => {
             projectname,
         });
 
-        
         if (!project) {
             return res.status(400).json({
                 errors: [{ msg: 'Project Not Found' }],
@@ -100,4 +119,9 @@ const deleteProject = async (req, res) => {
     }
 };
 
-module.exports = { getAllProjects, createProject, deleteProject };
+module.exports = {
+    getAllProjects,
+    createProject,
+    deleteProject,
+    getUserProjects,
+};

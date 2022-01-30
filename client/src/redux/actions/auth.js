@@ -54,7 +54,6 @@ export const register =
                 payload: userRes.data,
             });
             dispatch(loadUser());
-
         } catch (error) {
             console.log(error);
             dispatch({

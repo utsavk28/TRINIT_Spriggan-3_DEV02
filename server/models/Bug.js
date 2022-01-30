@@ -9,7 +9,6 @@ const BugSchema = new Schema({
     descriptions: {
         type: String,
         required: true,
-        
     },
     status: {
         type: String,

@@ -16,6 +16,7 @@
     "classnames": "^2.3.1",
     "echarts-for-react": "^3.0.2",
     "fuse.js": "^6.5.3",
+    "javascript-time-ago": "^2.3.11",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.1",
     "react-dom": "^17.0.2",
