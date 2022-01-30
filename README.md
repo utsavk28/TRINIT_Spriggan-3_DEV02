@@ -33,7 +33,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
- This project is built during the TRI-NIT hackathon.Three of the most prestigious engineering colleges in the country present this coding competition like no other for the ultimate battle of wits. ACM NITK, Spider - NIT Trichy and CSEA - NIT Warangal proudly present the Tri-NITarian Coding Cup.
+ This project is built during the TRI-NIT hackathon.
 * Home Page
 * Profile Page
 * Bugs Page
