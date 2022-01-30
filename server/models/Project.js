@@ -19,7 +19,7 @@ const ProjectSchema = new Schema({
     project_owner: {
         user: {
             type: Schema.Types.ObjectId,
-            ref:'user',
+            ref: 'user',
         },
         // required: true,
     },
@@ -28,6 +28,9 @@ const ProjectSchema = new Schema({
             user: {
                 type: Schema.Types.ObjectId,
                 ref: 'user',
+            },
+            level: {
+                type: Number,
             },
         },
     ],
