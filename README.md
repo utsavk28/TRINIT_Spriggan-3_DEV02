@@ -41,8 +41,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
     Bug Management System
+    	This project is built during the TRI-NIT hackathon.Three of the most prestigious engineering colleges in the country present this coding competition like no other for the ultimate battle of wits. ACM NITK, Spider - NIT Trichy and CSEA - NIT Warangal proudly present the Tri-NITarian Coding Cup.
 * Home Page
 * Profile Page
+* Bugs Page
 
 ### Features
 -  The first feature which a team-leader has right to is creation of a project. While creating a project he adds all the information required such as a project_name, project_description, creation_details, project owner, users,etc.  
