@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { statsData } from './ExploreSelectionData';
 import ExploreStatisticsCard from './ExploreStatisticsCard';
 import { getProjects } from '../../redux/actions/project';
+import ProjectCard from '../common/ProjectCard';
 
 const ExploreProjectSelection = () => {
     const { projects, bugs } = useSelector((state) => state.project);
@@ -19,7 +20,7 @@ const ExploreProjectSelection = () => {
                 <Row className='g-3 mb-3 mt-3'>
                     {projects.map((stat) => (
                         <Col key={stat.title} sm={4}>
-                            <ExploreStatisticsCard stat={stat} />
+                            <ProjectCard stat={stat} />
                         </Col>
                     ))}
                 </Row>

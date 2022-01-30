@@ -106,3 +106,23 @@ export const createProject =
             });
         }
     };
+
+export const reportBug =
+    ({ title, descriptions, projectId }) =>
+    async (dispatch) => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+
+        const body = JSON.stringify({ title, descriptions, projectId });
+        try {
+            await axios.post(`${url}/api/bugs/`, body, config);
+        } catch (error) {
+            dispatch({
+                type: PROJECT_ERROR,
+                payload: 'error',
+            });
+        }
+    };

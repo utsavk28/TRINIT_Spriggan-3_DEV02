@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 // import { statsData } from './SelectionData';
 import StatisticsCard from './StatisticsCard';
+import ProjectCard from '../common/ProjectCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Modal from 'react-bootstrap/Modal';
 import FalconCloseButton from 'components/common/FalconCloseButton';
@@ -135,7 +136,7 @@ const ProjectSelection = () => {
                 <Row className='g-3 mb-3'>
                     {projects.map((stat) => (
                         <Col key={stat.title} sm={4}>
-                            <StatisticsCard stat={stat} />
+                            <ProjectCard stat={stat} />
                         </Col>
                     ))}
                 </Row>
