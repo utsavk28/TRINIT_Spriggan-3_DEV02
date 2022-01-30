@@ -126,8 +126,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contributors
 
 - [Utsav Khatu](https://www.linkedin.com/in/utsav-khatu-431b741bb/) 
-- [Utsav Khatu](https://www.linkedin.com/in/utsav-khatu-431b741bb/) 
-- [Utsav Khatu](https://www.linkedin.com/in/utsav-khatu-431b741bb/) 
+- [Jeet Shah](https://www.linkedin.com/in/jeets25/) 
+- [Esha Shah](https://www.linkedin.com/in/esha-shah-8108b91a8/) 
 
 
 
