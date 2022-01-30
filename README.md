@@ -2,7 +2,6 @@
 
 
 <!-- PROJECT LOGO -->
-<h1>-</h1>
 <br />
     Bug Management System
     <br />
