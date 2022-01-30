@@ -7,6 +7,7 @@ const {
     getUserProjects,
     createProject,
     deleteProject,
+    joinProject
 } = require('../../controllers/projects');
 
 const router = express.Router();
@@ -27,10 +28,8 @@ router.post(
     createProject
 );
 
-router.post(
-    '/delete',
-    [auth, [check('projectname', 'Project Name is required').not().isEmpty()]],
-    deleteProject
-);
+router.post('/delete/:projectId', auth, deleteProject);
+
+router.put('/join/:projectId', auth, joinProject);
 
 module.exports = router;

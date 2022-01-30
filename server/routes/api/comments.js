@@ -22,7 +22,6 @@ router.post('/',[
     [
         check('description', 'Description is required').not().isEmpty(),
         check('bugId', 'projectId is required').not().isEmpty(),
-        check('projectId', 'projectId is required').not().isEmpty(),
     ],
 ],
 reportComments);
