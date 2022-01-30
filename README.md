@@ -123,7 +123,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 
 <!-- CONTACT -->
-## Contact
+## Contributors
 
 - [Utsav Khatu](https://www.linkedin.com/in/utsav-khatu-431b741bb/) 
 - [Utsav Khatu](https://www.linkedin.com/in/utsav-khatu-431b741bb/) 
