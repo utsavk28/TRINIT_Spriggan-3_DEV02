@@ -34,6 +34,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
  This project was built during the TRI-NIT hackathon.
+ https://drive.google.com/drive/folders/141ZKtnmDL65Y6vP1f_kRWQqil8fJu7kQ?usp=sharing
+ 
 * Home Page
 * Profile Page
 * Bugs Page
