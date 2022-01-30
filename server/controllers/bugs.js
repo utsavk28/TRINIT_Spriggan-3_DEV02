@@ -12,7 +12,11 @@ const getAllBugs = async (req, res) => {
     if (!errors.isEmpty())
         return res.status(400).json({ errors: errors.array() });
     try {
-        const posts = await Bug.find();
+        const posts = await Bug.find().populate(
+            'created_by',
+            'thread',
+            'assigned_to'
+        );
         res.json(posts);
     } catch (error) {
         console.log(error);
@@ -26,7 +30,11 @@ const getSpecificBugs = async (req, res) => {
     if (!errors.isEmpty())
         return res.status(400).json({ errors: errors.array() });
     try {
-        const posts = await Bug.findById(req.params.bugId);
+        const posts = await Bug.findById(req.params.bugId).populate(
+            'created_by',
+            'thread',
+            'assigned_to'
+        );
         res.json(posts);
     } catch (error) {
         console.log(error);
@@ -41,19 +49,18 @@ const updateBugs = async (req, res) => {
         return res.status(400).json({ errors: errors.array() });
     try {
         let posts = await Bug.findById(req.params.bugId);
-        posts.title=req.body.title;
-        posts.descriptions=req.body.descriptions;
-        posts.status=req.body.status;
-        posts.threat_level=req.body.threat_level;
-        posts.assigned_to=req.body.assigned_to;
-        
-        posts.created_by=req.body.created_by;
-        posts.thread=req.body.thread;
-        posts.projectId=req.body.projectId;
+        posts.title = req.body.title;
+        posts.descriptions = req.body.descriptions;
+        posts.status = req.body.status;
+        posts.threat_level = req.body.threat_level;
+        posts.assigned_to = req.body.assigned_to;
 
-        posts=await posts.save();
+        posts.created_by = req.body.created_by;
+        posts.thread = req.body.thread;
+        posts.projectId = req.body.projectId;
+
+        posts = await posts.save();
         res.json(posts);
-
     } catch (error) {
         console.log(error);
         res.status(500).send('Server Error');
@@ -76,7 +83,7 @@ const reportBugs = async (req, res) => {
     if (!errors.isEmpty())
         return res.status(400).json({ errors: errors.array() });
 
-    const { title, descriptions,projectId } = req.body;
+    const { title, descriptions, projectId } = req.body;
 
     try {
         const user = await User.findById(req.user.id).select('-password');
@@ -94,7 +101,7 @@ const reportBugs = async (req, res) => {
 
         let bug = await Bug.find({
             title,
-            projectId
+            projectId,
             // created_by: user,
         });
 
@@ -122,21 +129,43 @@ const reportBugs = async (req, res) => {
     }
 };
 //project specific bug
-const getProjectSpecificBugs = async(req,res)=>{
+const getProjectSpecificBugs = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty())
         return res.status(400).json({ errors: errors.array() });
     try {
-        const posts = await Bug.find({projectId:req.params.projId}).sort({
-            created_at:-1,
-        });
+        const posts = await Bug.find({ projectId: req.params.projId })
+            .sort({
+                created_at: -1,
+            })
+            .populate({
+                path: 'created_by',
+                populate: {
+                    path: 'user',
+                },
+            })
+            .populate({
+                path: 'thread',
+                populate: {
+                    path: 'comment',
+                },
+            })
+            // .populate({
+            //     path: 'assigned_to',
+            //     populate: {
+            //         path: 'user',
+            //     },
+            // })
+            // .populate({
+            //     populate: 'projectId',
+            // })
+            .exec();
         res.json(posts);
     } catch (error) {
         console.log(error);
         res.status(500).send('Server Error');
     }
 };
-
 
 // Delete Bug
 const deleteBug = async (req, res) => {
@@ -171,4 +200,11 @@ const deleteBug = async (req, res) => {
     }
 };
 
-module.exports = { getAllBugs, reportBugs, deleteBug,getSpecificBugs,updateBugs ,getProjectSpecificBugs};
+module.exports = {
+    getAllBugs,
+    reportBugs,
+    deleteBug,
+    getSpecificBugs,
+    updateBugs,
+    getProjectSpecificBugs,
+};

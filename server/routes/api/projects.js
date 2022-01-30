@@ -4,17 +4,20 @@ const { check, oneOf } = require('express-validator');
 const auth = require('../../middleware/auth');
 const {
     getAllProjects,
+    getProjectById,
     getUserProjects,
     createProject,
     deleteProject,
-    joinProject
+    joinProject,
 } = require('../../controllers/projects');
 
 const router = express.Router();
 
 router.get('/', getAllProjects);
 
-router.get('/user', auth, getUserProjects);
+router.get('/:projectId', getProjectById);
+
+router.get('/user/request',auth, getUserProjects);
 
 router.post(
     '/',

@@ -8,7 +8,7 @@ import AddIssue from './AddIssue/AddIssue';
 import BugPage from './BugPage';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { getAllBugsforProject } from '../../redux/actions/project';
+import { getAllBugsforProject, getProject } from '../../redux/actions/project';
 import Members from './Member/Members';
 
 const Project = () => {
@@ -18,8 +18,9 @@ const Project = () => {
 
     useEffect(() => {
         dispatch(getAllBugsforProject(location));
+        dispatch(getProject(location));
     }, [location]);
-    
+
     return (
         <>
             <Row>
@@ -41,8 +42,16 @@ const Project = () => {
                                 exact
                                 component={AddIssue}
                             />
-                            <Route path='/bug' exact component={BugPage} />
-                            <Route path="/members" exact component={Members} />
+                            <Route
+                                path='/project/:projectId/bug'
+                                exact
+                                component={BugPage}
+                            />
+                            <Route
+                                path='/project/:projectId/members'
+                                exact
+                                component={Members}
+                            />
                         </Switch>
                     </Col>
                 </Router>

@@ -159,9 +159,13 @@ const ProjectHome = () => {
                 </Row>
                 <Row className='mt-3'>
                     <Col className='col-sm-7 d-flex justify-content-center'>
-                        {bugs.map((bug) => {
-                            return <IssueCard issue={bug} />;
-                        })}
+                        <div style={{ width: '100%' }}>
+                            <Row className='ms-3'>
+                                {bugs.map((bug) => {
+                                    return <IssueCard issue={bug} />;
+                                })}
+                            </Row>
+                        </div>
                     </Col>
                     <Col className='col-sm-5 d-flex justify-content-center'>
                         <div style={{ width: '100%' }}>

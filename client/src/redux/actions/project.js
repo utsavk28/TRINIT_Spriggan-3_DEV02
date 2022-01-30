@@ -57,8 +57,12 @@ export const getProjects = () => async (dispatch) => {
 
 export const getUserProjects = () => async (dispatch) => {
     try {
-        const res = await axios.get(`${url}/api/project/user`);
+        console.log('000')
+        const res = await axios.get(`${url}/api/project/user/request`);
         // console.log(res.data);
+        // const res = {
+        //     data:0
+        // }
         dispatch({
             type: GET_PROJECTS,
             payload: res.data,
@@ -119,6 +123,19 @@ export const reportBug =
         const body = JSON.stringify({ title, descriptions, projectId });
         try {
             await axios.post(`${url}/api/bugs/`, body, config);
+        } catch (error) {
+            dispatch({
+                type: PROJECT_ERROR,
+                payload: 'error',
+            });
+        }
+    };
+
+export const joinProject =
+    ({ projectId }) =>
+    async (dispatch) => {
+        try {
+            await axios.put(`${url}/api/project/join/${projectId}`);
         } catch (error) {
             dispatch({
                 type: PROJECT_ERROR,

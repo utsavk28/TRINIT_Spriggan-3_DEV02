@@ -2,7 +2,7 @@ import React from 'react';
 import FalconCardHeader from 'components/common/FalconCardHeader';
 import { Card, Button } from 'react-bootstrap';
 
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { DateFormatter } from '../../utils/date-format';
 
 const IssueCard = ({ issue }) => {
@@ -19,9 +19,11 @@ const IssueCard = ({ issue }) => {
                     <Card.Body>
                         <p className='fs--1 text-600'>{descriptions}</p>
                         <div className='d-flex justify-content-end'>
-                            <Button variant='primary' type='submit'>
-                                More Details
-                            </Button>
+                            <Link to={`/project/${location}/bug`}>
+                                <Button variant='primary' type='submit'>
+                                    More Details
+                                </Button>
+                            </Link>
                         </div>
                     </Card.Body>
                 </Card>

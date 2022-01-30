@@ -11,7 +11,63 @@ const getAllProjects = async (req, res) => {
     if (!errors.isEmpty())
         return res.status(400).json({ errors: errors.array() });
     try {
-        const projects = await Project.find();
+        const projects = await Project.find()
+            .populate({
+                path: 'project_owner',
+                populate: {
+                    path: 'user',
+                },
+            })
+            .populate({
+                path: 'users',
+                populate: {
+                    path: 'user',
+                },
+            })
+            .populate({
+                path: 'bugs',
+                populate: {
+                    path: 'bug',
+                },
+            })
+            .exec();
+
+        // console.log(projects.populated('project_owner'));
+        res.json(projects);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Server Error');
+    }
+};
+
+// Get Project
+const getProjectById = async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+        return res.status(400).json({ errors: errors.array() });
+    try {
+        const projects = await Project.findById(req.params.projectId)
+            .populate({
+                path: 'project_owner',
+                populate: {
+                    path: 'user',
+                },
+            })
+            .populate({
+                path: 'users',
+                populate: {
+                    path: 'user',
+                },
+            })
+            .populate({
+                path: 'bugs',
+                populate: {
+                    path: 'bug',
+                },
+            })
+            .exec();
+
+        // console.log(projects.populated('project_owner'));
         res.json(projects);
     } catch (error) {
         console.log(error);
@@ -21,17 +77,40 @@ const getAllProjects = async (req, res) => {
 
 // Get User Projects
 const getUserProjects = async (req, res) => {
+    // console.log(req.user.id);
     const errors = validationResult(req);
     if (!errors.isEmpty())
         return res.status(400).json({ errors: errors.array() });
     try {
-        const projects = await Project.find();
+        const projects = await Project.find()
+            .populate({
+                path: 'project_owner',
+                populate: {
+                    path: 'user',
+                },
+            })
+            .populate({
+                path: 'users',
+                populate: {
+                    path: 'user',
+                },
+            })
+            .populate({
+                path: 'bugs',
+                populate: {
+                    path: 'bug',
+                },
+            })
+            .exec();
+    
+
         let userProjects = [];
         for (let i = 0; i < projects.length; i++) {
-            const users = projects[i].users.map((user) => String(user.user));
+            const users = projects[i].users.map((user) => String(user.user._id));
             if (users.includes(String(req.user.id)))
                 userProjects.push(projects[i]);
         }
+        // console.log(userProjects.length,projects.length);
         res.json(userProjects);
     } catch (error) {
         console.log(error);
@@ -160,6 +239,7 @@ const joinProject = async (req, res) => {
 
 module.exports = {
     getAllProjects,
+    getProjectById,
     createProject,
     deleteProject,
     getUserProjects,
