@@ -113,6 +113,22 @@ const reportComments =async (req, res) => {
         res.status(500).send('Server Error');
     }
 };
+//Bug specific comments
+const getBugComments=async(req,res)=>{
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+        return res.status(400).json({ errors: errors.array() });
+    try {
+        const posts = await Comment.find({bugId:req.params.bugId}).sort({
+            date:-1,
+        });
+        res.json(posts);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Server Error');
+    }
+};
+
 
 //Delete comment
 const deleteComments = async (req, res) => {
@@ -144,4 +160,4 @@ const deleteComments = async (req, res) => {
     }
 };
 
-module.exports = { reportComments,getAllComments,getSpecificComments,updateComments,deleteComments};
+module.exports = { reportComments,getAllComments,getSpecificComments,updateComments,deleteComments,getBugComments};
