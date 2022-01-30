@@ -2,19 +2,13 @@
 
 
 <!-- PROJECT LOGO -->
+<h1>-<h1>
 <br />
-    A Social Media Web App with Real Time Chat features
-    <br />
-    <a href="https://social-app-v1.netlify.app/"><strong>Explore the Web App »</strong></a>
+    Bug Management System
     <br />
     <br />
-    <a href="https://social-app-v1.netlify.app/">Web App</a>
-    ·
-    <a href="https://github.com/utsavk28/Social/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/utsavk28/Social/issues">Request Feature</a>
-  </p>
-</p>
+
+
 
 
 
@@ -37,11 +31,8 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
@@ -49,21 +40,12 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-It is Social Media Web App with Real Time Chat Feature
+    Bug Management System
 * Home Page
-![Social Home Page](https://utsavk28.github.io/HostedAssets/social-ss-2.png)
 * Profile Page
-![Social Profile Page](https://utsavk28.github.io/HostedAssets/social-ss-1.png)
-* Chat Page
-![Social Chat Page](https://utsavk28.github.io/HostedAssets/social-ss-3.png)
 
 ### Features
-- CRUD operation on Posts, Profile and Comments
-- Like/Unlike Post & Comments
-- Follow/Unfollow Users 
-- Chat with your Friends with Real Time Chat Feature
-- Save Posts
-- Explore Page
+- a
 
 
 ### Built With
@@ -118,25 +100,7 @@ To get a local copy up and running follow these simple example steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Allows individuals to keep in touch with friends and extended family
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
-
- - [x] Phase 1
-	 - CRUD Operations on Posts, Comments and Profile 
-	 - CRUD operation on Posts, Profile and Comments
-	- Like/Unlike Post & Comments
-- [x] Phase 2
-	- Follow/Unfollow Users 
-	- Chat with your Friends with Real Time Chat Feature
-	- Save Posts
-	- Explore Page
-- [ ] Phase 3
-	- .
+Allow Organization & Individuals to track Bugs & tackle them
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -162,18 +126,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 
 Your Name - [Utsav Khatu](https://www.linkedin.com/in/utsav-khatu-431b741bb/) 
-
-Project Link: [https://github.com/utsavk28/Social](https://github.com/utsavk28/Social)
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-* [Project for Reference](https://github.com/utsavk28/DevConnector)
-* [Socket Private Message](https://socket.io/get-started/private-messaging-part-1/)
-* [Medium Article for Chat App](https://medium.com/@mcurena24/add-direct-messaging-to-your-app-using-react-redux-socket-io-4953ad53944d)
-
-
+Your Name - [Utsav Khatu](https://www.linkedin.com/in/utsav-khatu-431b741bb/) 
+Your Name - [Utsav Khatu](https://www.linkedin.com/in/utsav-khatu-431b741bb/) 
 
 
 
