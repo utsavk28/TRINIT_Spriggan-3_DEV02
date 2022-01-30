@@ -34,6 +34,7 @@ const NavbarTop = () => {
   }, []);
 
   return (
+    <div className='container-fluid'>
     <Navbar
       className={classNames('navbar-glass  fs--1 navbar-top sticky-kit', {
         // 'navbar-glass-shadow': showDropShadow
@@ -70,6 +71,7 @@ const NavbarTop = () => {
 
       <TopNavRightSideNavItem />
     </Navbar>
+    </div>
   );
 };
 

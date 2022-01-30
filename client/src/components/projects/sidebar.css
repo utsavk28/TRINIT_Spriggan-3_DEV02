@@ -1,0 +1,15 @@
+.navbar-style a {
+    font-size: 1rem !important;
+    text-transform: capitalize;
+    color: palegreen !important;
+    font-weight: 600;
+  }
+  
+  
+.navbar-style a:hover {
+    color: var(--falcon-1000) !important;
+  }
+
+.handlebar-icon{
+    color: var(--falcon-1000);
+}

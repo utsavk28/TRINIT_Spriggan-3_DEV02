@@ -11,8 +11,28 @@ const getAllProjects = async (req, res) => {
     if (!errors.isEmpty())
         return res.status(400).json({ errors: errors.array() });
     try {
-        const posts = await Project.find();
-        res.json(posts);
+        const projects = await Project.find();
+        res.json(projects);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Server Error');
+    }
+};
+
+// Get User Projects
+const getUserProjects = async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+        return res.status(400).json({ errors: errors.array() });
+    try {
+        const projects = await Project.find();
+        let userProjects = [];
+        for (let i = 0; i < projects.length; i++) {
+            const users = projects[i].users.map((user) => String(user.user));
+            if (users.includes(String(req.user.id)))
+                userProjects.push(projects[i]);
+        }
+        res.json(userProjects);
     } catch (error) {
         console.log(error);
         res.status(500).send('Server Error');
@@ -71,14 +91,11 @@ const deleteProject = async (req, res) => {
     if (!errors.isEmpty())
         return res.status(400).json({ errors: errors.array() });
 
-    const { projectname } = req.body;
+    const { projectname } = req.params;
 
     try {
-        const project = await Project.findOne({
-            projectname,
-        });
+        let project = await Project.findById(projectId);
 
-        
         if (!project) {
             return res.status(400).json({
                 errors: [{ msg: 'Project Not Found' }],
@@ -100,4 +117,51 @@ const deleteProject = async (req, res) => {
     }
 };
 
-module.exports = { getAllProjects, createProject, deleteProject };
+// Join Project
+const joinProject = async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+        return res.status(400).json({ errors: errors.array() });
+
+    const { projectId } = req.params;
+
+    try {
+        let project = await Project.findById(projectId);
+
+        if (!project) {
+            return res.status(400).json({
+                errors: [{ msg: 'Project Not Found' }],
+            });
+        }
+
+        for (let i = 0; i < project.users.length; i++) {
+            if (String(project.users[i].user) === String(req.user.id)) {
+                return res.status(400).json({
+                    errors: [
+                        { msg: 'You are already a member of this project' },
+                    ],
+                });
+            }
+        }
+
+        project.users.push({
+            user: req.user.id,
+        });
+
+        project = await project.save();
+        res.json({
+            msg: 'Project Joined',
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Server Error');
+    }
+};
+
+module.exports = {
+    getAllProjects,
+    createProject,
+    deleteProject,
+    getUserProjects,
+    joinProject,
+};
