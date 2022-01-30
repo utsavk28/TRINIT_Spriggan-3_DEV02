@@ -41,10 +41,10 @@ const AuthCardLayout = ({ leftSideContent, children, footer = true }) => {
                         className="link-light mb-4 font-sans-serif fw-bolder fs-4 d-inline-block"
                         to="/"
                       >
-                        4CLIMATE
+                        S3
                       </Link>
                       <p className="opacity-75 text-white">
-                        With the power of 4CLIMATE, you can now manage, control and measure your farm carefree with your fingertips
+                        With the power of S3, you can now manage, and control your bugs carefree with your fingertips
                         from anywhere in the world!
                       </p>
                     </div>
