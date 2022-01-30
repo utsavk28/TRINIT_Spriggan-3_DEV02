@@ -49,17 +49,20 @@ const updateBugs = async (req, res) => {
         return res.status(400).json({ errors: errors.array() });
     try {
         let posts = await Bug.findById(req.params.bugId);
-        posts.title = req.body.title;
-        posts.descriptions = req.body.descriptions;
-        posts.status = req.body.status;
-        posts.threat_level = req.body.threat_level;
-        posts.assigned_to = req.body.assigned_to;
 
-        posts.created_by = req.body.created_by;
-        posts.thread = req.body.thread;
-        posts.projectId = req.body.projectId;
+        posts.title=req.body.title;
+        posts.descriptions=req.body.descriptions;
+        posts.status=req.body.status;
+        posts.threat_level=req.body.threat_level;
+        posts.assigned_to=req.body.assigned_to;
+        
+        posts.created_by=req.body.created_by;
+        posts.thread=req.body.thread;
+        posts.projectId=req.body.projectId;
+        posts.deadline=req.body.deadline;
+        posts.user_id=req.body.user_id;
 
-        posts = await posts.save();
+        posts=await posts.save();
         res.json(posts);
     } catch (error) {
         console.log(error);

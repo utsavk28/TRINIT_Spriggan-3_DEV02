@@ -8,7 +8,6 @@ const CommentSchema = new Schema({
     },
     bugId:{
         type:String,
-        required:true,
         bug:{
             type:Schema.Types.ObjectId,
             ref:'bug',
@@ -16,7 +15,6 @@ const CommentSchema = new Schema({
     },
     projectId:{
         type:String,
-        required:true,
         project:{
             type:Schema.Types.ObjectId,
             ref:'project',
