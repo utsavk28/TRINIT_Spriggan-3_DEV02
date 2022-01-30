@@ -33,7 +33,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
- This project is built during the TRI-NIT hackathon.
+ This project was built during the TRI-NIT hackathon.
 * Home Page
 * Profile Page
 * Bugs Page
